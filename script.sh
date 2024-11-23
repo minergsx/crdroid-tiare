@@ -15,7 +15,7 @@ git config --global user.name "Gokul Santhosh"
 git config --global user.email "gokulsanthosh.xyz@gmail.com"
 #repo init
 cd /crdroid
-repo init -u https://github.com/crdroidandroid/android.git -b 15.0 --git-lfs --depth=1
+repo init -u https://github.com/crdroidandroid/android.git -b 15.0 --git-lfs
 mkdir .repo/local_manifests
 cp /workspaces/crdroid-tiare/newrs.xml .repo/local_manifests/roomservice.xml
 #repo sync
