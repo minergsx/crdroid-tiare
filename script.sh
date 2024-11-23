@@ -21,6 +21,10 @@ cp /workspaces/crdroid-tiare/newrs.xml .repo/local_manifests/roomservice.xml
 #repo sync
 repo sync -j8
 #build
+fallocate -l 48G swap.img
+chmod 0600 swap.img
+mkswap swap.img
+swapon swap.img
 export USE_CCACHE=1
 . build/envsetup.sh
 brunch Tiare_4_19
