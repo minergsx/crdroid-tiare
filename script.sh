@@ -17,12 +17,10 @@ git config --global user.email "gokulsanthosh.xyz@gmail.com"
 cd /crdroid
 repo init -u https://github.com/crdroidandroid/android.git -b 15.0 --git-lfs
 mkdir .repo/local_manifests
-cp /workspaces/crdroid-tiare/newrs.xml .repo/local_manifests/roomservice.xml
+cp $GITHUB_WORKSPACE/newrs.xml .repo/local_manifests/roomservice.xml
 #repo sync
 repo sync -j8
 #build
 export USE_CCACHE=1
 . build/envsetup.sh
 brunch Tiare_4_19
-make clean
-make -j8
