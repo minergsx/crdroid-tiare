@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: du -f && free -m && lscpu && lsblk && echo $GITHUB_WORKSPACE
+        run: df -h && free -m && lscpu && lsblk && echo $GITHUB_WORKSPACE
