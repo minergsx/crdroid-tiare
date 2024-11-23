@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<!-- Remote -->
+	<!-- Kernel -->
+	<remote  name="mi-thorium"            fetch="https://github.com/Mi-Thorium" />
+	<default revision="refs/heads/master" remote="mi-thorium" sync-c="true" sync-j="4" />
+	<!-- Other -->
+	<remote  name="mi-thorium-o" fetch="https://github.com/Mi-Thorium"  revision="a15/master" />
+	<remote  name="lineage" 	 fetch="https://github.com" 			revision="lineage-22.0" />
+	
+	
+	<!-- Kernel -->
+	<!-- Kernel Sources -->
+	<project path="kernel" name="kernel_msm-4.19" groups="kernel" revision="mithorium/a13/master" >
+		<linkfile src="drivers" dest="drivers" />
+	</project>
+	
+	<!-- Kernel Modules -->
+	<project path="dts/vendor-legacy" name="kernel_devicetree_msm-4.19" groups="dts" revision="dts/master" >
+		<linkfile src="." dest="kernel/arch/arm64/boot/dts/vendor-legacy" />
+	</project>
+	<project path="dts/xiaomi-msm8937" name="kernel_devicetree_xiaomi-msm8937" groups="dts" revision="dts/mi8937/4.19/master" >
+		<linkfile src="." dest="kernel/arch/arm64/boot/dts/xiaomi-msm8937" />
+    </project>
+    <project path="module/xiaomi-msm8937" name="kernel_techpack_xiaomi-msm8937" groups="module" revision="techpack/mi8937/4.19/master" >
+		<linkfile src="." dest="kernel/techpack/xiaomi-msm8937" />
+    </project>
+    <project path="module/audio-legacy" name="kernel_techpack_audio-legacy" groups="module" revision="audio/4.19/mithorium/master" >
+		<linkfile src="." dest="kernel/techpack/audio-legacy" />
+    </project>
+    <project path="module/camera-legacy" name="kernel_techpack_camera-legacy" groups="module" revision="camera/LA.UM.8.6.r1-05300-89xx.0/4.19/mithorium" >
+		<linkfile src="." dest="kernel/techpack/camera-legacy" />
+    </project>
+    <project path="module/camera-legacy-m" name="kernel_techpack_camera-legacy" groups="module" revision="camera/LA.UM.5.3-10610-89xx.0/4.19/mithorium" >
+		<linkfile src="." dest="kernel/techpack/camera-legacy-m" />
+    </project>
+    <project path="module/prima" name="vendor_qcom_opensource_wlan_prima" groups="module" revision="wlan/LA.UM.9.6.4/mithorium/master" >
+		<linkfile src="." dest="kernel/drivers/staging/prima" />
+    </project>
+    
+    
+    <!-- Other -->
+    <!-- Common -->
+    <project path="device/xiaomi/mithorium-common" 			name="android_device_xiaomi_mithorium-common" 				groups="device" remote="mi-thorium-o"/>
+    <project path="vendor/xiaomi/mithorium-common-graphics" name="proprietary_vendor_xiaomi_mithorium-common-graphics"  groups="device" remote="mi-thorium-o" revision="a11/master"/>
+    <project path="vendor/xiaomi/mithorium-common-4.19" 	name="proprietary_vendor_xiaomi_mithorium-common-4.19" 		groups="device" remote="mi-thorium-o"/>
+    
+    <!-- Hardware -->
+    <project path="hardware/mithorium/common" name="android_hardware_mithorium_common" groups="device" remote="mi-thorium-o" revision="lineage">
+		<linkfile src="_Android.mk" dest="hardware/mithorium/Android.mk" />
+		<linkfile src="mithorium_qcom_hals.mk" dest="hardware/mithorium/mithorium_qcom_hals.mk" />
+		
+		<linkfile src="guard-generic.bp" 						dest="hardware/mithorium/audio/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/Android.bp" />
+		<linkfile src="guard-generic.bp" 						dest="hardware/mithorium/display/LA.UM.8.6.2.r1-09500-89xx.0/Android.bp" />
+		<linkfile src="guard-qcom-qssi-display-lineage-19.1.bp" dest="hardware/mithorium/display/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/Android.bp" />
+		<linkfile src="guard-qcom-qssi-display.mk"              dest="hardware/mithorium/display/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/Android.mk" />
+	</project>
+    
+    <!-- Hardware - display-commonsys-intf -->
+    <project path="hardware/mithorium/display/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/display" name="LineageOS/android_vendor_qcom_opensource_display-commonsys-intf" groups="qcom,pdk-qcom" remote="github"/>
+    
+    <!-- Hardware - LA.UM.8.6.2 -->
+    <project path="hardware/mithorium/display/LA.UM.8.6.2.r1-09500-89xx.0/display" name="android_hardware_qcom_display_mithorium" groups="device" remote="mi-thorium-o" revision="mithorium/LA.UM.8.6.2.r1-09500-89xx.0"/>
+    
+    <!-- Hardware - LA.UM.9.6.4 -->
+    <project path="hardware/mithorium/audio/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/hal"   name="android_hardware_qcom_audio_mithorium" 	groups="device" remote="mi-thorium-o" revision="mithorium/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0"/>
+    <project path="hardware/mithorium/media/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/hal"   name="android_hardware_qcom_media_mithorium" 	groups="device" remote="mi-thorium-o" revision="mithorium/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0"/>
+    <project path="hardware/mithorium/display/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0/hal" name="android_hardware_qcom_display_mithorium"  groups="device" remote="mi-thorium-o" revision="mithorium/LA.UM.9.6.4.r2-03900-89xx.QSSI13r2.0"/>
+    
+    <!-- MiThoriumSSI -->
+    <project path="device/xiaomi/MiThoriumSSI" name="android_device_xiaomi_MiThoriumSSI" groups="device" remote="mi-thorium"/>
+    
+    <!-- Tiare -->
+    <project path="device/xiaomi/Tiare" name="android_device_xiaomi_Tiare"     groups="device" remote="mi-thorium"/>
+    <project path="vendor/xiaomi/Tiare" name="proprietary_vendor_xiaomi_Tiare" groups="device" remote="mi-thorium" revision="a14/master"/>
+    
+    <!-- Tiare - Kernel 4.19 -->
+    <project path="device/xiaomi/Tiare_4_19" name="android_device_xiaomi_Tiare_4_19" groups="device" remote="mi-thorium" revision="a11/master"/>
+    
+    
+    <!-- LineageOS additions -->
+    <project path="device/lineage/sepolicy" name="LineageOS/android_device_lineage_sepolicy" remote="lineage" />
+    <project path="external/tinyxml" name="aosp-mirror/platform/external/tinyxml" groups="pdk" remote="github" revision="refs/tags/android-11.0.0_r48" />
+    <project path="hardware/lineage/compat" name="LineageOS/android_hardware_lineage_compat" remote="lineage" />
+    <project path="packages/apps/FMRadio" name="LineageOS/android_packages_apps_FMRadio" remote="lineage" />
+	<project path="packages/resources/devicesettings" name="LineageOS/android_packages_resources_devicesettings" remote="lineage" />
+	<project path="prebuilts/extract-tools" name="LineageOS/android_prebuilts_extract-tools" clone-depth="1" remote="lineage" />
+	<project path="tools/extract-utils" name="LineageOS/android_tools_extract-utils" remote="lineage" />
+
+	<!-- CodeLinaro additions -->
+	<project path="device/qcom/sepolicy-legacy-um" name="LineageOS/android_device_qcom_sepolicy" groups="qcom,sdm660" revision="lineage-22.0-legacy-um" remote="lineage" />
+	<project path="external/ant-wireless/ant_client" name="LineageOS/android_external_ant-wireless_ant_client" groups="qcom,sdm660" remote="lineage" />
+	<project path="external/ant-wireless/ant_native" name="LineageOS/android_external_ant-wireless_ant_native" groups="qcom,sdm660" remote="lineage" />
+	<project path="external/ant-wireless/ant_service" name="LineageOS/android_external_ant-wireless_ant_service" groups="qcom,sdm660" remote="lineage" />
+	<project path="external/ant-wireless/hidl" name="LineageOS/android_external_ant-wireless_hidl" groups="qcom,qssi" remote="lineage" />
+	<project path="external/json-c" name="LineageOS/android_external_json-c" groups="qcom,qssi" remote="lineage" />
+	<project path="hardware/qcom-caf/bootctrl" name="LineageOS/android_hardware_qcom_bootctrl" groups="qcom,waipio-vendor" revision="lineage-22.0-caf" remote="lineage" />
+	<project path="hardware/qcom-caf/common" name="LineageOS/android_hardware_qcom-caf_common" groups="qcom" remote="lineage" />
+	<project path="hardware/qcom-caf/wlan" name="LineageOS/android_hardware_qcom_wlan" groups="qcom,waipio-vendor" revision="lineage-22.0-caf" remote="lineage" />
+	<project path="vendor/codeaurora/telephony" name="LineageOS/android_vendor_codeaurora_telephony" groups="qcom,qssi" remote="lineage" />
+	<project path="vendor/qcom/opensource/commonsys-intf/display" name="LineageOS/android_vendor_qcom_opensource_display-commonsys-intf" groups="qcom,qssi" remote="lineage" />
+	<project path="vendor/qcom/opensource/commonsys/display" name="LineageOS/android_vendor_qcom_opensource_display-commonsys" groups="qcom,qssi" remote="lineage" />
+	<project path="vendor/qcom/opensource/display" name="LineageOS/android_vendor_qcom_opensource_display" groups="qcom" remote="lineage" />
+	<project path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um" name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" groups="qcom,lahaina" revision="lineage-22.0-legacy-um" remote="lineage" />
+	<project path="vendor/qcom/opensource/dataservices" name="LineageOS/android_vendor_qcom_opensource_dataservices" groups="qcom,waipio-vendor" remote="lineage" />
+	<project path="vendor/qcom/opensource/healthd-ext" name="LineageOS/android_vendor_qcom_opensource_healthd-ext" groups="qcom,waipio-vendor" remote="lineage" />
+	<project path="vendor/qcom/opensource/interfaces" name="LineageOS/android_vendor_qcom_opensource_interfaces" groups="qcom,qssi" remote="lineage" />
+	<project path="vendor/qcom/opensource/libfmjni" name="LineageOS/android_vendor_qcom_opensource_libfmjni" groups="qcom" remote="lineage" />
+	<project path="vendor/qcom/opensource/power" name="LineageOS/android_vendor_qcom_opensource_power" groups="qcom,waipio-vendor" remote="lineage" />
+	<project path="vendor/qcom/opensource/thermal-engine" name="LineageOS/android_vendor_qcom_opensource_thermal-engine" groups="qcom,waipio-vendor" remote="lineage" />
+	<project path="vendor/qcom/opensource/vibrator" name="LineageOS/android_vendor_qcom_opensource_vibrator" groups="qcom,waipio-vendor" remote="lineage" />
+</manifest>
