@@ -12,6 +12,7 @@
 	<!-- Kernel Sources -->
 	<project path="kernel" name="kernel_msm-4.19" groups="kernel" revision="mithorium/a13/master" remote="mi-thorium" >
 		<linkfile src="drivers" dest="drivers" />
+    <linkfile src="." dest="kernel/xiaomi/mithorium-4.19/kernel" />
 	</project>
 	
 	<!-- Kernel Modules -->
